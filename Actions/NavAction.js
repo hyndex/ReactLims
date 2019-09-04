@@ -1,4 +1,4 @@
-export const UPDATE_NAV='nav:updateNav'
+export const UPDATE_NAV='NavChange'
 
 export default function UpdateNav(newNav){
     return {

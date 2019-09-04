@@ -27,12 +27,12 @@ export default class Sidebar extends React.Component{
         
         this.state={
             options:test_options,
-            current:0
+            current:store.getState().nav.payload.Nav
         }
     }
 
     Clicked(arr){
-        console.log('clicked')
+        // console.log('clicked')
         console.log(arr)
         store.dispatch(UpdateNav(arr))
     }

@@ -17,7 +17,7 @@ const store = createStore(allReducer,
     {
         user:{type:'ChangeToken',payload:{Token:''}},
         permission:{type:'PermissionChange',payload:[]},
-        nav:{type:'NavChange',payload:{Nav:''}}
+        nav:{type:'NavChange',payload:{Nav:0}}
     },
     compose(
         (typeof window !== 'undefined' && window.devToolsExtension) ? window.devToolsExtension() : f => f

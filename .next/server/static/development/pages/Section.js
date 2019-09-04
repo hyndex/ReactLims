@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -104,7 +104,7 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_NAV", function() { return UPDATE_NAV; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return UpdateNav; });
-const UPDATE_NAV = 'nav:updateNav';
+const UPDATE_NAV = 'NavChange';
 function UpdateNav(newNav) {
   return {
     type: UPDATE_NAV,
@@ -812,12 +812,12 @@ class Sidebar extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     ['Section', './Section', true], ['Test', './Test', true]];
     this.state = {
       options: test_options,
-      current: 0
+      current: _Reducers_Reducer__WEBPACK_IMPORTED_MODULE_3__["default"].getState().nav.payload.Nav
     };
   }
 
   Clicked(arr) {
-    console.log('clicked');
+    // console.log('clicked')
     console.log(arr);
     _Reducers_Reducer__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_Actions_NavAction__WEBPACK_IMPORTED_MODULE_4__["default"])(arr));
   }
@@ -966,7 +966,13 @@ function NavReducer(state = '', {
   payload
 }) {
   if (type === _Actions_NavAction__WEBPACK_IMPORTED_MODULE_0__["UPDATE_NAV"]) {
-    return payload.Nav; //.newState
+    return {
+      type: _Actions_NavAction__WEBPACK_IMPORTED_MODULE_0__["UPDATE_NAV"],
+      payload: {
+        Nav: payload.Nav
+      } //payload.Nav//.newState
+
+    };
   }
 
   return state;
@@ -1042,7 +1048,7 @@ const store = Object(redux__WEBPACK_IMPORTED_MODULE_2__["createStore"])(allReduc
   nav: {
     type: 'NavChange',
     payload: {
-      Nav: ''
+      Nav: 0
     }
   }
 }, Object(redux__WEBPACK_IMPORTED_MODULE_2__["compose"])( false ? undefined : f => f));
@@ -1882,7 +1888,7 @@ Section.getInitialProps = async function () {
 
 /***/ }),
 
-/***/ 6:
+/***/ 3:
 /*!********************************!*\
   !*** multi ./pages/Section.js ***!
   \********************************/

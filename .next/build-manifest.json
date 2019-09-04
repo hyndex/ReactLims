@@ -4,6 +4,14 @@
     "static/development/dll/dll_397dc449097af0b4e992.js.map"
   ],
   "pages": {
+    "/Client": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/Sample": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/Section": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"

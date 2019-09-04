@@ -11,7 +11,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_NAV", function() { return UPDATE_NAV; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return UpdateNav; });
-var UPDATE_NAV = 'nav:updateNav';
+var UPDATE_NAV = 'NavChange';
 function UpdateNav(newNav) {
   return {
     type: UPDATE_NAV,
@@ -617,7 +617,7 @@ function (_React$Component) {
     ['Section', './Section', true], ['Test', './Test', true]];
     _this.state = {
       options: test_options,
-      current: 0
+      current: _Reducers_Reducer__WEBPACK_IMPORTED_MODULE_8__["default"].getState().nav.payload.Nav
     };
     return _this;
   }
@@ -625,7 +625,7 @@ function (_React$Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Sidebar, [{
     key: "Clicked",
     value: function Clicked(arr) {
-      console.log('clicked');
+      // console.log('clicked')
       console.log(arr);
       _Reducers_Reducer__WEBPACK_IMPORTED_MODULE_8__["default"].dispatch(Object(_Actions_NavAction__WEBPACK_IMPORTED_MODULE_9__["default"])(arr));
     }
@@ -819,7 +819,13 @@ function NavReducer() {
       payload = _ref.payload;
 
   if (type === _Actions_NavAction__WEBPACK_IMPORTED_MODULE_0__["UPDATE_NAV"]) {
-    return payload.Nav; //.newState
+    return {
+      type: _Actions_NavAction__WEBPACK_IMPORTED_MODULE_0__["UPDATE_NAV"],
+      payload: {
+        Nav: payload.Nav
+      } //payload.Nav//.newState
+
+    };
   }
 
   return state;
@@ -897,7 +903,7 @@ var store = Object(redux__WEBPACK_IMPORTED_MODULE_2__["createStore"])(allReducer
   nav: {
     type: 'NavChange',
     payload: {
-      Nav: ''
+      Nav: 0
     }
   }
 }, Object(redux__WEBPACK_IMPORTED_MODULE_2__["compose"])( true && window.devToolsExtension ? window.devToolsExtension() : function (f) {
@@ -14208,7 +14214,7 @@ _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(f
 
 /***/ }),
 
-/***/ 4:
+/***/ 1:
 /*!*****************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2FTest&absolutePagePath=J%3A%5CProject%5CReactLims%5Cpages%5CTest.js ***!
   \*****************************************************************************************************************/
@@ -14231,5 +14237,5 @@ module.exports = dll_01f9a3fa864a7b7414d8;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=Test.js.map
