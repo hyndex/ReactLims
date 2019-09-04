@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDom from 'react-dom'
 import App from '../Components/App'
 import store from '../Reducers/Reducer'
 import {Provider} from 'react-redux'
@@ -8,26 +7,41 @@ import TableBody from '../Components/Table'
 
 const table_header=["id","section","name","description"]
 
-const table_body=(data)=>{
-    console.log(data)
-    const id=data.id
-    const section=data.section.name
-    const name=data.name
-    const description=data.description
-    return(
-        <tr>
-            <th scope="row">{id}</th>
-            <td>{section}</td>
-            <td>{name}</td>
-            <td>{description}</td>
-        </tr>
-    )
-}
+
 export default class Test extends React.Component{
+    table_body=(data)=>{
+        console.log(data)
+        const id=data.id
+        const section=data.section.name
+        const name=data.name
+        const description=data.description
+        return(
+            <tr id={id} onClick={this.handleClick(id)}>
+                <th scope="row">{id}</th>
+                <td>{section}</td>
+                <td>{name}</td>
+                <td>{description}</td>
+            </tr>
+        )
+    }
+
+    handleClick(id){
+        fetch("http://127.0.0.1:8000/lab/Test/"+id, {
+        method: 'GET',
+        headers: {
+          "Content-type":"application/x-www-form-urlencoded",
+          'Accept': 'application/json',
+          'Authorization' : 'Token 3eda3bbfca53f9d28f51fa591a5ed6ff81e5a78a'
+        }
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+    }
+    
     make_table(data){
         var table=[]
         for(var key in data){
-            table.push(table_body(data[key]))
+            table.push(this.table_body(data[key]))
         }
         return table
     }
@@ -55,3 +69,4 @@ Test.getInitialProps=async function(){
         data
     }
 }
+

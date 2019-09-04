@@ -1396,6 +1396,36 @@ function _createClass(Constructor, protoProps, staticProps) {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _defineProperty; });
+/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
+/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__);
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js ***!
@@ -14048,17 +14078,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _Components_App__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Components/App */ "./Components/App.js");
-/* harmony import */ var _Reducers_Reducer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Reducers/Reducer */ "./Reducers/Reducer.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/isomorphic-unfetch/browser.js");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _Components_Table__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../Components/Table */ "./Components/Table.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _Components_App__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Components/App */ "./Components/App.js");
+/* harmony import */ var _Reducers_Reducer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Reducers/Reducer */ "./Reducers/Reducer.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/isomorphic-unfetch/browser.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _Components_Table__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../Components/Table */ "./Components/Table.js");
+
+
 
 
 
@@ -14067,8 +14099,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "J:\\Project\\ReactLims\\pages\\Test.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
-
+var __jsx = react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement;
 
 
 
@@ -14077,64 +14108,92 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
 
 var table_header = ["id", "section", "name", "description"];
 
-var table_body = function table_body(data) {
-  console.log(data);
-  var id = data.id;
-  var section = data.section.name;
-  var name = data.name;
-  var description = data.description;
-  return __jsx("tr", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18
-    },
-    __self: this
-  }, __jsx("th", {
-    scope: "row",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19
-    },
-    __self: this
-  }, id), __jsx("td", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20
-    },
-    __self: this
-  }, section), __jsx("td", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21
-    },
-    __self: this
-  }, name), __jsx("td", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22
-    },
-    __self: this
-  }, description));
-};
-
 var Test =
 /*#__PURE__*/
 function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(Test, _React$Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(Test, _React$Component);
 
   function Test() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Test);
 
-    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Test).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Test)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "table_body", function (data) {
+      console.log(data);
+      var id = data.id;
+      var section = data.section.name;
+      var name = data.name;
+      var description = data.description;
+      return __jsx("tr", {
+        id: id,
+        onClick: _this.handleClick(id),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19
+        },
+        __self: this
+      }, __jsx("th", {
+        scope: "row",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        },
+        __self: this
+      }, id), __jsx("td", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
+        },
+        __self: this
+      }, section), __jsx("td", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22
+        },
+        __self: this
+      }, name), __jsx("td", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23
+        },
+        __self: this
+      }, description));
+    });
+
+    return _this;
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(Test, [{
+    key: "handleClick",
+    value: function handleClick(id) {
+      isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_13___default()("http://127.0.0.1:8000/lab/Test/" + id, {
+        method: 'GET',
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded",
+          'Accept': 'application/json',
+          'Authorization': 'Token 3eda3bbfca53f9d28f51fa591a5ed6ff81e5a78a'
+        }
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        return console.log(data);
+      });
+    }
+  }, {
     key: "make_table",
     value: function make_table(data) {
       var table = [];
 
       for (var key in data) {
-        table.push(table_body(data[key]));
+        table.push(this.table_body(data[key]));
       }
 
       return table;
@@ -14143,26 +14202,26 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var body = 'Welcome to Test';
-      return __jsx(react_redux__WEBPACK_IMPORTED_MODULE_11__["Provider"], {
-        store: _Reducers_Reducer__WEBPACK_IMPORTED_MODULE_10__["default"],
+      return __jsx(react_redux__WEBPACK_IMPORTED_MODULE_12__["Provider"], {
+        store: _Reducers_Reducer__WEBPACK_IMPORTED_MODULE_11__["default"],
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 51
         },
         __self: this
-      }, __jsx(_Components_App__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        body: __jsx(_Components_Table__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      }, __jsx(_Components_App__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        body: __jsx(_Components_Table__WEBPACK_IMPORTED_MODULE_14__["default"], {
           header: table_header,
           body: this.make_table(this.props.data),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 38
+            lineNumber: 52
           },
           __self: this
         }),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38
+          lineNumber: 52
         },
         __self: this
       }));
@@ -14170,7 +14229,7 @@ function (_React$Component) {
   }]);
 
   return Test;
-}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_9___default.a.Component);
 
 
 Test.getInitialProps =
@@ -14184,7 +14243,7 @@ _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(f
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_12___default()('http://127.0.0.1:8000/lab/Test/', {
+          return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_13___default()('http://127.0.0.1:8000/lab/Test/', {
             method: 'GET',
             headers: {
               "Content-type": "application/x-www-form-urlencoded",
@@ -14214,7 +14273,7 @@ _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(f
 
 /***/ }),
 
-/***/ 1:
+/***/ 0:
 /*!*****************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2FTest&absolutePagePath=J%3A%5CProject%5CReactLims%5Cpages%5CTest.js ***!
   \*****************************************************************************************************************/
@@ -14237,5 +14296,5 @@ module.exports = dll_01f9a3fa864a7b7414d8;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[0,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=Test.js.map

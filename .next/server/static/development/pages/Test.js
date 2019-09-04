@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -927,6 +927,36 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-prope
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _defineProperty; });
+/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
+/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__);
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/helpers/extends.js":
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/helpers/extends.js ***!
@@ -1558,10 +1588,9 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Test; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "react-dom");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Components_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Components/App */ "./Components/App.js");
 /* harmony import */ var _Reducers_Reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Reducers/Reducer */ "./Reducers/Reducer.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "react-redux");
@@ -1569,9 +1598,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _Components_Table__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Components/Table */ "./Components/Table.js");
-var _jsxFileName = "J:\\Project\\ReactLims\\pages\\Test.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+var _jsxFileName = "J:\\Project\\ReactLims\\pages\\Test.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
@@ -1579,53 +1608,69 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const table_header = ["id", "section", "name", "description"];
+class Test extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
+  constructor(...args) {
+    super(...args);
 
-const table_body = data => {
-  console.log(data);
-  const id = data.id;
-  const section = data.section.name;
-  const name = data.name;
-  const description = data.description;
-  return __jsx("tr", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18
-    },
-    __self: undefined
-  }, __jsx("th", {
-    scope: "row",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19
-    },
-    __self: undefined
-  }, id), __jsx("td", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20
-    },
-    __self: undefined
-  }, section), __jsx("td", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21
-    },
-    __self: undefined
-  }, name), __jsx("td", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22
-    },
-    __self: undefined
-  }, description));
-};
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "table_body", data => {
+      console.log(data);
+      const id = data.id;
+      const section = data.section.name;
+      const name = data.name;
+      const description = data.description;
+      return __jsx("tr", {
+        id: id,
+        onClick: this.handleClick(id),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19
+        },
+        __self: this
+      }, __jsx("th", {
+        scope: "row",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        },
+        __self: this
+      }, id), __jsx("td", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
+        },
+        __self: this
+      }, section), __jsx("td", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22
+        },
+        __self: this
+      }, name), __jsx("td", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23
+        },
+        __self: this
+      }, description));
+    });
+  }
 
-class Test extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  handleClick(id) {
+    isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_5___default()("http://127.0.0.1:8000/lab/Test/" + id, {
+      method: 'GET',
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded",
+        'Accept': 'application/json',
+        'Authorization': 'Token 3eda3bbfca53f9d28f51fa591a5ed6ff81e5a78a'
+      }
+    }).then(response => response.json()).then(data => console.log(data));
+  }
+
   make_table(data) {
     var table = [];
 
     for (var key in data) {
-      table.push(table_body(data[key]));
+      table.push(this.table_body(data[key]));
     }
 
     return table;
@@ -1637,7 +1682,7 @@ class Test extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       store: _Reducers_Reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 37
+        lineNumber: 51
       },
       __self: this
     }, __jsx(_Components_App__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -1646,13 +1691,13 @@ class Test extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         body: this.make_table(this.props.data),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38
+          lineNumber: 52
         },
         __self: this
       }),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 38
+        lineNumber: 52
       },
       __self: this
     }));
@@ -1677,7 +1722,7 @@ Test.getInitialProps = async function () {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!*****************************!*\
   !*** multi ./pages/Test.js ***!
   \*****************************/
