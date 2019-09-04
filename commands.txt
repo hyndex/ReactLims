@@ -1,0 +1,20 @@
+npm init -y
+npm install -save next react react-dom
+
+cpr:-
+"scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  }
+
+make folder :- pages
+make index.js in pages folder
+
+make a basic function and export it
+    function Home(){
+        return <div>Hello World</div>
+    }
+    export default Home
+
+npm run dev
