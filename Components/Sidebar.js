@@ -15,7 +15,7 @@ export default class Sidebar extends React.Component{
             ['Sample','./Sample',true],
             ['Client','./Client',true],
             // ['CreateUser','./CreateUser',true],
-            ['Section','./Section',true],
+            // ['Section','./Section',true],
             ['Test','./Test',true],
             // ['Field','./Field',true],
             // ['User','./User',true],

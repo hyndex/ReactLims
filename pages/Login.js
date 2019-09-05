@@ -60,7 +60,7 @@ export default class Login extends React.Component{
                 const data = await res.json()
                 console.log(data.token)
                 const cookies = new Cookies();
-                cookies.set('Token', data.token);
+                cookies.set('Token', data.token.toString(),{ path: '/' });
                 console.log(cookies.get('Token'));
                 store.dispatch(UpdateUser(data))
             } catch (error) {

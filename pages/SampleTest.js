@@ -5,17 +5,23 @@ import {Provider} from 'react-redux'
 import fetch from 'isomorphic-unfetch'
 import TableBody from '../Components/Table'
 import Show from '../Components/Show'
+import Cookies from 'universal-cookie';
+
 
 
 const table_header=['Id',"Test",'Test Status']
 export default class SampleTest extends React.Component{
     constructor() {
         super()
+        const cookies = new Cookies();
+        const Token = cookies.get('Token')
         this.state = {
             id: '',
             test: '',
             test_status: '',
             result: [],
+            fields_data: {},
+            Token:Token
         }
         this.handleClick = this.handleClick.bind(this)
     }
@@ -63,10 +69,25 @@ export default class SampleTest extends React.Component{
         return table
     }
 
-    make_table(data){
-        var table=[]
-        for(var key in data){
-            table.push(this.table_body(data[key]))
+    async componentDidMount() {
+        await fetch('http://127.0.0.1:8000/lab/SampleTest/', {
+            method: 'GET',
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded",
+                'Accept': 'application/json',
+                'Authorization': 'Token '+this.state.Token
+            }
+        })
+            .then(response => response.json())
+            .then(data => this.setState({
+                fields_data: data
+            }))
+    }
+    make_table() {
+        var table = []
+        
+        for (var key in this.state.fields_data) {
+            table.push(this.table_body(this.state.fields_data[key]))
         }
         return table
     }
@@ -75,22 +96,8 @@ export default class SampleTest extends React.Component{
          return(
             <Provider store={store}>
                 <Show table={this.generate_show_fields()}/>
-                <App body={<TableBody header={table_header} body={this.make_table(this.props.data)}/>}/>
+                <App body={<TableBody handleClick={this.handleClick} header={table_header} body={this.make_table()} />} />
             </Provider> 
         )
-    }
-}
-SampleTest.getInitialProps=async function(){
-    const res=await fetch('http://127.0.0.1:8000/lab/SampleTest/', {
-        method: 'GET',
-        headers: {
-          "Content-type":"application/x-www-form-urlencoded",
-          'Accept': 'application/json',
-          'Authorization' : 'Token 3eda3bbfca53f9d28f51fa591a5ed6ff81e5a78a'
-        }
-      })
-    const data=await res.json()
-    return {
-        data
     }
 }
