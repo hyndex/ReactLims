@@ -2,10 +2,8 @@ import React from 'react'
 import fetch from 'isomorphic-unfetch'
 import store from '../Reducers/Reducer'
 import UpdateUser from '../Actions/UserAction'
+import UpdatePermission from '../Actions/PermissionAction'
 import Cookies from 'universal-cookie';
-
-
-
 
 
 export default class Login extends React.Component {
@@ -32,7 +30,7 @@ export default class Login extends React.Component {
                 }
 
             })
-            .then(async (res) => await store.dispatch({ type: 'ChangePermission', payload: res.json() }))
+            .then(async (res) => await store.dispatch(UpdatePermission(res.json())))
             .then(res => res.status)
             .then(async (status) => await (status != 400) ? this.setState({ logged: true }) : this.setState({ logged: false }))
 
@@ -73,6 +71,7 @@ export default class Login extends React.Component {
             var cookies = new Cookies();
             const CookieToken = cookies.get('Token')
             this.setState({ Token: CookieToken })
+            store.dispatch(UpdateUser(CookieToken))
         }
         console.log(this.state)
         return (
