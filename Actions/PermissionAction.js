@@ -1,4 +1,4 @@
-export const UPDATE_PERMISSION='permission:updatePermission'
+export const UPDATE_PERMISSION='ChangePermission'
 
 export default function UpdatePermission(newPermission)
 {

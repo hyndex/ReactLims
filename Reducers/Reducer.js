@@ -16,7 +16,7 @@ const allReducer=combineReducers({
 const store = createStore(allReducer, 
     {
         user:{type:'ChangeToken',payload:{Token:''}},
-        permission:{type:'PermissionChange',payload:[]},
+        permission:{type:'ChangePermission',payload:{}},
         nav:{type:'NavChange',payload:{Nav:0}}
     },
     compose(

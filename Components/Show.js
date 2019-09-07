@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export default class Show extends React.Component {
     render() {
         return (
@@ -7,11 +8,14 @@ export default class Show extends React.Component {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-body">
-                            <table class="table">
+                            <table class="table" id='printableTable'>
                                 <tbody>
                                     {this.props.table}
                                 </tbody>
                             </table>
+                            <form className='my-2' action='#'>
+                                {this.props.editfrom}
+                            </form>
                         </div>
                     </div>
                 </div>

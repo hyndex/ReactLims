@@ -24,9 +24,58 @@ export default class Sample extends React.Component {
             client: '',
             sampletest: [],
             fields_data: {},
-            Token:Token
+            Token:Token,
+            put_data:{
+                name:'',
+                client:''
+            }
         }
         this.handleClick = this.handleClick.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.Update = this.Update.bind(this)
+    }
+    Update=()=>{
+        const data={
+            id:this.state.put_data.id,
+            name:this.state.put_data.name,
+            client:this.state.put_data.client,
+        }
+        fetch("http://127.0.0.1:8000/lab/Sample/" + id, {
+            method: 'PUT',
+            body:JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+                'Authorization': 'Token ' + this.state.Token
+            }
+        })
+        .then(response => response.status)
+        .then(async (data) => await (data==200)?alert('Successful'):alert('Not Successful'))
+    }
+    handleChange(e) {
+        const { put_data } = { ...this.state };
+        const currentState = put_data;
+        const { name, value } = e.target;
+        currentState[name] = value;
+      
+        this.setState({ put_data: currentState })
+        
+        console.log('PUT STATE=>', this.state.put_data)
+    }
+    edit_form = () => {
+        return (
+            <div>
+                <div className="form-group">
+                    <label className='font-weight-bold' for="name">name</label>
+                    <input type="name" onChange={this.handleChange} className="form-control" id="name" key='name' aria-describedby="name" value={this.state.name} />
+                </div>
+                <div className="form-group">
+                    <label className='font-weight-bold' for="client">client id</label>
+                    <input type="client" onChange={this.handleChange} className="form-control" id="client" key='client' aria-describedby="client" value={this.state.client} />
+                </div>
+                <button type="submit" onClick={this.Update} className="btn btn-primary">Update</button>
+            </div>
+        )
     }
     table_body = (data) => {
         console.log(data)
@@ -47,7 +96,7 @@ export default class Sample extends React.Component {
             headers: {
                 "Content-type": "application/x-www-form-urlencoded",
                 'Accept': 'application/json',
-                'Authorization': 'Token 3eda3bbfca53f9d28f51fa591a5ed6ff81e5a78a'
+                'Authorization': 'Token '+this.state.Token
             }
         })
             .then(response => response.json())
@@ -55,7 +104,11 @@ export default class Sample extends React.Component {
                 id: data.id,
                 client: data.client.name,
                 name: data.name,
-                sampletest:data.SampleTest_sample
+                sampletest:data.SampleTest_sample,
+                put_data:{
+                    name:data.name,
+                    client:data.client.id
+                }
             }))
             .then(() => console.log('##########', this.state))
             .then(() => $('#readupdatelist').modal('show'))
@@ -95,11 +148,10 @@ export default class Sample extends React.Component {
 
     
     render() {
-        const body = 'Welcome to Sample'
         return (
             <Provider store={store}>
                 <SampleForm/>
-                <Show table={this.generate_show_fields()}/>
+                <Show table={this.generate_show_fields()} editfrom={this.edit_form()}/>
                 <App body={<TableBody handleClick={this.handleClick} header={table_header} body={this.make_table()} />} />
             </Provider>
         )
