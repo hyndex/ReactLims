@@ -3,62 +3,40 @@ import fetch from 'isomorphic-unfetch'
 import store from '../Reducers/Reducer'
 import UpdateUser from '../Actions/UserAction'
 import Cookies from 'universal-cookie';
-import UpdatePermission from '../Actions/PermissionAction';
-import { Redirect } from 'react-router'
-import { Router } from 'next/router';
+
+
 
 
 
 export default class Login extends React.Component {
     constructor() {
         super()
-        const cookies = new Cookies();
-        const Token = cookies.get('Token')
         this.state = {
             username: "",
             password: "",
-            Token: Token,
-            logged: false
+            logged: false,
+            Token: ''
         }
         this.handleChange = this.handleChange.bind(this)
         this.Login = this.Login.bind(this)
-        store.dispatch({
-            type: 'ChangeToken',
-            payload: { Token: Token }
-        })
-
-        try 
-        {
-            const cookies = new Cookies();
-            const Token = cookies.get('Token')
-            console.log(Token)
-
-            fetch('http://127.0.0.1:8000/users/Permission/',
-                {
-                    method: 'GET',
-                    headers: {
-                        "Content-type": "application/json;charset=utf-8",
-                        'Accept': 'application/json',
-                        "Authorization": Token.toString()
-                    }
-
-                })
-                .then(
-                    async (res) => await store.dispatch(
-                        { type: 'ChangePermission', payload: res.json() }
-                    )
-                )
-
-                .then(
-                    res => res.status
-                )
-                .then(
-                    async (status) => await (status != 400) ? this.setState({ logged: true }) : this.setState({ logged: false })
-                )
-        }
-        
     }
 
+    setPermission(){
+         fetch('http://127.0.0.1:8000/users/Permission/',
+            {
+                method: 'GET',
+                headers: {
+                    "Content-type": "application/json;charset=utf-8",
+                    'Accept': 'application/json',
+                    "Authorization": Token.toString()
+                }
+
+            })
+            .then(async (res) => await store.dispatch({ type: 'ChangePermission', payload: res.json() }))
+            .then(res => res.status)
+            .then(async (status) => await (status != 400) ? this.setState({ logged: true }) : this.setState({ logged: false }))
+
+    }
     Login() {
         fetch('http://127.0.0.1:8000/users/Login/', {
             method: 'POST',
@@ -72,9 +50,8 @@ export default class Login extends React.Component {
                 const data = await res.json()
                 console.log(data.token)
                 const cookies = new Cookies();
-                cookies.set('Token', data.token.toString(), { path: '/' });
+                cookies.set('Token', data.token);
                 console.log(cookies.get('Token'));
-                this.setState({ Token: cookies.get('Token') })
                 store.dispatch(UpdateUser(data))
             } catch (error) {
                 console.error(error)
@@ -82,25 +59,6 @@ export default class Login extends React.Component {
         }).catch(err => {
             console.error(err)
         })
-        fetch("http://127.0.0.1:8000/users/Permission/" + this.state.id + '/', {
-            method: 'PUT',
-            body: JSON.stringify(data),
-            headers: {
-                "Content-type": "application/json",
-                'Accept': 'application/json',
-                'Authorization': 'Token ' + this.state.Token
-            }
-        })
-            .then(response => response.json())
-            .then(async (data) => {
-                try {
-                    const perm = await data()
-                    store.dispatch(UpdatePermission(perm))
-                    this.setState({ logged: true })
-                } catch (error) {
-                    console.error(error)
-                }
-            })
     }
 
     handleChange(event) {
@@ -109,11 +67,14 @@ export default class Login extends React.Component {
         })
         console.log(this.state)
     }
-
+    // cookies = new Cookies();
     render() {
-        if (this.state.logged == true) {
-            return (<Router><Redirect to="/Client/" /></Router>);
+        if (this.state.Token == '' && new Cookies().get('Token') != undefined) {
+            var cookies = new Cookies();
+            const CookieToken = cookies.get('Token')
+            this.setState({ Token: CookieToken })
         }
+        console.log(this.state)
         return (
             <html>
                 <head>
