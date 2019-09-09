@@ -4,7 +4,6 @@ import store from '../Reducers/Reducer'
 import UpdateUser from '../Actions/UserAction'
 import UpdatePermission from '../Actions/PermissionAction'
 import Cookies from 'universal-cookie';
-// import { browserHistory, Router, Route } from 'react-router';
 
 
 
@@ -22,17 +21,24 @@ export default class Login extends React.Component {
     }
 
     setPermission() {
+        console.log('CookieToken=>',new Cookies().get('Token'))
         fetch('http://127.0.0.1:8000/users/Permission/',
             {
                 method: 'GET',
                 headers: {
-                    "Content-type": "application/json;charset=utf-8",
+                    "Content-type": "application/json",
                     'Accept': 'application/json',
-                    "Authorization": 'Token ' + this.state.Token
+                    "Authorization": 'Token ' + new Cookies().get('Token')
                 }
 
             })
-            .then(async (res) => await store.dispatch(UpdatePermission(res.json())))
+            .then(async (res) => {
+                const data = await res.json()
+                store.dispatch(UpdatePermission(data))
+                const cookies = new Cookies();
+                cookies.set('Permission', data);
+                return res
+            })
             .then(res => res.status)
             .then(async (status) => await (status != 400) ? this.setState({ logged: true }) : this.setState({ logged: false }))
 
@@ -42,7 +48,7 @@ export default class Login extends React.Component {
             method: 'POST',
             body: JSON.stringify(this.state),
             headers: {
-                "Content-type": "application/json;charset=utf-8",
+                "Content-type": "application/json",
                 'Accept': 'application/json',
             }
         }).then(async (res) => {
@@ -52,10 +58,11 @@ export default class Login extends React.Component {
                 const cookies = new Cookies();
                 cookies.set('Token', data.token);
                 console.log(cookies.get('Token'));
-                store.dispatch(UpdateUser(data))
+                store.dispatch(UpdateUser(cookies.get('Token')))
+                this.setState({Token:cookies.get('Token')})
             } catch (error) { console.error(error) }
         }).catch(err => { console.error(err) })
-        setPermission()
+        this.setPermission()
     }
 
     handleChange(event) {

@@ -6,6 +6,7 @@ import fetch from 'isomorphic-unfetch'
 import TableBody from '../Components/Table'
 import Show from '../Components/Show'
 import Cookies from 'universal-cookie';
+import Post from '../Components/Post'
 
 
 
@@ -26,31 +27,68 @@ export default class SampleTest extends React.Component {
                 id: '',
                 test_status: '',
                 fields_data: {}
+            },
+            post_data: {
+                sample_id: '',
+                test_id: '',
             }
         }
         this.handleClick = this.handleClick.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.handlePostChange = this.handlePostChange.bind(this)
         this.Update = this.Update.bind(this)
+        this.Delete = this.Delete.bind(this)
     }
 
-    Update=()=>{
-        const data={
-            id:this.state.put_data.id,
-            test_status:this.state.put_data.test_status,
-            ResultFields_sample_test:this.state.put_data.fields_data,
+    Update = () => {
+        const data = {
+            id: this.state.put_data.id,
+            test_status: this.state.put_data.test_status,
+            ResultFields_sample_test: this.state.put_data.fields_data,
         }
         fetch("http://127.0.0.1:8000/lab/SampleTest/" + id, {
             method: 'PUT',
-            body:JSON.stringify(data),
+            body: JSON.stringify(data),
             headers: {
                 "Content-type": "application/json",
                 'Accept': 'application/json',
                 'Authorization': 'Token ' + this.state.Token
             }
         })
-        .then(response => response.status)
-        .then(async (data) => await (data==200)?alert('Successful'):alert('Not Successful'))
+            .then(response => response.status)
+            .then(async (data) => await (data == 200) ? alert('Successful') : alert('Not Successful'))
 
+    }
+    Create = () => {
+        const data = {
+            sample_id: this.state.post_data.sample_id,
+            test_id: this.state.post_data.test_id,
+            ResultFields_sample_test: [],
+        }
+        console.log(JSON.stringify(data))
+        fetch("http://127.0.0.1:8000/lab/SampleTest/", {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+                'Authorization': 'Token ' + this.state.Token
+            }
+        })
+            .then(response => response.status)
+            .then(async (data) => await (data == 200) ? alert('Successful') : alert('Not Successful'))
+    }
+    Delete(e) {
+        fetch("http://127.0.0.1:8000/lab/SampleTest/" + e.target.id, {
+            method: 'DELETE',
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+                'Authorization': 'Token ' + this.state.Token
+            }
+        })
+            .then(response => response.status)
+            .then(async (data) => await (data == 204) ? alert('Successful') : alert('Not Successful'))
     }
     table_body = (data) => {
         console.log(data)
@@ -118,10 +156,24 @@ export default class SampleTest extends React.Component {
         }
         console.log('PUT DATA=> ', this.state.put_data)
     }
+    handlePostChange(e) {
+        console.log('e.targets.name=>', e.target.name)
+        console.log('e.targets.value=>', e.target.value)
+        const { post_data } = { ...this.state };
+        const currentState = post_data;
+        const { name, value } = e.target;
+        currentState[name] = value;
 
+        this.setState({ post_data: currentState })
+
+        console.log('POST STATE=>', this.state.post_data)
+    }
 
     edit_fields = () => {
         var table = []
+        table.push(
+            <button type="submit" onClick={this.Delete} key={this.state.id} id={this.state.id} className="btn btn-danger my-5">Delete</button>
+        )
         table.push(
             <div className="form-group">
                 <label className='font-weight-bold' for="name">test_status</label>
@@ -129,11 +181,17 @@ export default class SampleTest extends React.Component {
             </div>
         )
         for (var key in this.state.put_data.fields_data) {
+            //this.state.put_data.fields_data[key].field.name
+            table.push(
+                //id desabled
+                <div class="alert alert-primary mt-5" role="alert">
+                    {this.state.put_data.fields_data[key].field.name}</div>
+            )
             table.push(
                 //id desabled
                 <div className="form-group">
                     <label className='font-weight-bold' for="ID">id</label>
-                    <input type="text" onChange={this.handleChange} className="form-control" name="id" id={key} key={key} aria-describedby="value" placeholder={this.state.put_data.fields_data[key].id} />
+                    <input type="text" onChange={this.handleChange} className="form-control" name="id" id={key} key={key} aria-describedby="value" value={this.state.put_data.fields_data[key].id} readOnly />
                 </div>
             )
             table.push(
@@ -161,7 +219,23 @@ export default class SampleTest extends React.Component {
         table.push(<button type="submit" onClick={this.Update} className="btn btn-primary">Update</button>)
         return table
     }
-
+    post_form = () => {
+        return (
+            <div>
+                <div className="form-row">
+                    <div className="form-group col-md-6">
+                        <label for="Section">Sample id</label>
+                        <input type="text" id='sample' onChange={this.handlePostChange} id="sample_id" name="sample_id" className="form-control" placeholder="sample" />
+                    </div>
+                    <div className="form-group col-md-6">
+                        <label for="Description">Test Id</label>
+                        <input type="text" className="form-control" onChange={this.handlePostChange} id="test_id" name="test_id" placeholder="test" />
+                    </div>
+                </div>
+                <button type="submit" onClick={this.Create} className="btn btn-primary">Create</button>
+            </div>
+        )
+    }
     async componentDidMount() {
         await fetch('http://127.0.0.1:8000/lab/SampleTest/', {
             method: 'GET',
@@ -189,6 +263,7 @@ export default class SampleTest extends React.Component {
         return (
             <Provider store={store}>
                 <Show table={this.generate_show_fields()} editfrom={this.edit_fields()} />
+                <Post postform={this.post_form()} />
                 <App body={<TableBody handleClick={this.handleClick} header={table_header} body={this.make_table()} />} />
             </Provider>
         )
