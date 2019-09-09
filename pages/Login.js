@@ -4,6 +4,8 @@ import store from '../Reducers/Reducer'
 import UpdateUser from '../Actions/UserAction'
 import UpdatePermission from '../Actions/PermissionAction'
 import Cookies from 'universal-cookie';
+// import { browserHistory, Router, Route } from 'react-router';
+
 
 
 export default class Login extends React.Component {
@@ -19,14 +21,14 @@ export default class Login extends React.Component {
         this.Login = this.Login.bind(this)
     }
 
-    setPermission(){
-         fetch('http://127.0.0.1:8000/users/Permission/',
+    setPermission() {
+        fetch('http://127.0.0.1:8000/users/Permission/',
             {
                 method: 'GET',
                 headers: {
                     "Content-type": "application/json;charset=utf-8",
                     'Accept': 'application/json',
-                    "Authorization": Token.toString()
+                    "Authorization": 'Token ' + this.state.Token
                 }
 
             })
@@ -51,12 +53,9 @@ export default class Login extends React.Component {
                 cookies.set('Token', data.token);
                 console.log(cookies.get('Token'));
                 store.dispatch(UpdateUser(data))
-            } catch (error) {
-                console.error(error)
-            }
-        }).catch(err => {
-            console.error(err)
-        })
+            } catch (error) { console.error(error) }
+        }).catch(err => { console.error(err) })
+        setPermission()
     }
 
     handleChange(event) {
@@ -72,8 +71,14 @@ export default class Login extends React.Component {
             const CookieToken = cookies.get('Token')
             this.setState({ Token: CookieToken })
             store.dispatch(UpdateUser(CookieToken))
+            this.setPermission()
         }
-        console.log(this.state)
+        if (this.state.logged == true) {
+            return (
+                window.location.replace("./SampleTest")
+
+            );
+        }
         return (
             <html>
                 <head>
